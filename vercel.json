@@ -1,0 +1,38 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "planora-ai": {
+      "root": "planora-ai",
+      "framework": "fastapi",
+      "functions": {
+        "index.py": {
+          "maxDuration": 60
+        }
+      }
+    },
+    "frontend": {
+      "root": "planora-ai/frontend",
+      "framework": "vite",
+      "rewrites": [
+        {
+          "source": "/(.*)",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "planora-ai"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
+  ]
+}
