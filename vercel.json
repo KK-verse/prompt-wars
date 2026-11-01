@@ -4,21 +4,11 @@
     "planora-ai": {
       "root": "planora-ai",
       "framework": "fastapi",
-      "functions": {
-        "index.py": {
-          "maxDuration": 60
-        }
-      }
+      "entrypoint": "index:app"
     },
     "frontend": {
       "root": "planora-ai/frontend",
-      "framework": "vite",
-      "rewrites": [
-        {
-          "source": "/(.*)",
-          "destination": "/index.html"
-        }
-      ]
+      "framework": "vite"
     }
   },
   "rewrites": [
